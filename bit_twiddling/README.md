@@ -1,0 +1,1 @@
+These examples come from "Bit Twiddling Hacks" by Sean Eron Anderson: https://graphics.stanford.edu/~seander/bithacks.html
