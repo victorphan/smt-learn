@@ -8,7 +8,6 @@
     (ite (bvslt v (_ bv0 32)) (bvneg (_ bv1 32)) (_ bv0 32))
 )
 
-; CHAR_BIT is the number of bits per byte (normally 8).
 ; sign = -(v < 0);
 (define-fun impl0_sign ((v (_ BitVec 32))) (_ BitVec 32)
     (bvneg (ite (bvslt v (_ bv0 32)) (_ bv1 32) (_ bv0 32)))
@@ -19,6 +18,7 @@
 (check-sat)
 (pop 1)
 
+; CHAR_BIT is the number of bits per byte (normally 8).
 ; or, to avoid branching on CPUs with flag registers (IA32):
 ; sign = -(int)((unsigned int)((int)v) >> (sizeof(int) * CHAR_BIT - 1));
 (define-fun impl1_sign ((v (_ BitVec 32))) (_ BitVec 32)
