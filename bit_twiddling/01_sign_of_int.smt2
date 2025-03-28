@@ -1,7 +1,7 @@
 ; Compute the sign of an integer
 
 ; int v;      // we want to find the sign of v
-(declare-const v (_ BitVec 32))
+(declare-const in (_ BitVec 32))
 
 ; if v < 0 then -1, else 0.
 (define-fun spec_sign ((v (_ BitVec 32))) (_ BitVec 32)
@@ -14,7 +14,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign v) (impl0_sign v))))
+(assert (not (= (spec_sign in) (impl0_sign in))))
 (check-sat)
 (pop 1)
 
@@ -26,7 +26,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign v) (impl1_sign v))))
+(assert (not (= (spec_sign in) (impl1_sign in))))
 (check-sat)
 (pop 1)
 
@@ -37,7 +37,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign v) (impl2_sign v))))
+(assert (not (= (spec_sign in) (impl2_sign in))))
 (check-sat)
 (pop 1)
 
@@ -47,7 +47,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign v) (impl3_sign v))))
+(assert (not (= (spec_sign in) (impl3_sign in))))
 (check-sat)
 (pop 1)
 
@@ -63,7 +63,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign_alt v) (impl_sign_alt v))))
+(assert (not (= (spec_sign_alt in) (impl_sign_alt in))))
 (check-sat)
 (pop 1)
 
@@ -79,7 +79,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign_with_eq_zero v) (spec_sign_with_eq_zero_alt v))))
+(assert (not (= (spec_sign_with_eq_zero in) (spec_sign_with_eq_zero_alt in))))
 (check-sat)
 (pop 1)
 
@@ -91,7 +91,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign_with_eq_zero v) (impl0_sign_with_eq_zero v))))
+(assert (not (= (spec_sign_with_eq_zero in) (impl0_sign_with_eq_zero in))))
 (check-sat)
 (pop 1)
 
@@ -104,7 +104,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign_with_eq_zero v) (impl1_sign_with_eq_zero v))))
+(assert (not (= (spec_sign_with_eq_zero in) (impl1_sign_with_eq_zero in))))
 (check-sat)
 (pop 1)
 
@@ -116,7 +116,7 @@
 )
 
 (push 1)
-(assert (not (= (spec_sign_with_eq_zero v) (impl2_sign_with_eq_zero v))))
+(assert (not (= (spec_sign_with_eq_zero in) (impl2_sign_with_eq_zero in))))
 (check-sat)
 (pop 1)
 
@@ -132,6 +132,6 @@
 )
 
 (push 1)
-(assert (not (= (spec_non_negative v) (impl_non_negative v))))
+(assert (not (= (spec_non_negative in) (impl_non_negative in))))
 (check-sat)
 (pop 1)
