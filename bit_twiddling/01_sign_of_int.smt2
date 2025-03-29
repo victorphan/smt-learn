@@ -1,6 +1,5 @@
 ; Compute the sign of an integer
 
-; int v;      // we want to find the sign of v
 (declare-const in (_ BitVec 32))
 
 ; if v < 0 then -1, else 0.

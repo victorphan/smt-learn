@@ -1,5 +1,5 @@
 ; Detect if two integers have opposite signs
-; int x, y;               // input values to compare signs
+
 (declare-const in_x (_ BitVec 32))
 (declare-const in_y (_ BitVec 32))
 

@@ -1,6 +1,5 @@
 ; Compute the integer absolute value (abs) without branching
 
-; int v;           // we want to find the absolute value of v
 (declare-const in (_ BitVec 32))
 
 (define-fun spec_abs ((v (_ BitVec 32))) (_ BitVec 32)
