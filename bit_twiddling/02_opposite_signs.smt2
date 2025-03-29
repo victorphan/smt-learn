@@ -14,5 +14,8 @@
 )
 
 (push 1)
+(echo "spec_opposite_signs != impl_opposite_signs")
 (assert (not (= (spec_opposite_signs in_x in_y) (impl_opposite_signs in_x in_y))))
 (check-sat)
+(echo "")
+(pop 1)

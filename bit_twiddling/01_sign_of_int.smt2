@@ -14,8 +14,10 @@
 )
 
 (push 1)
+(echo "spec_sign != impl0_sign")
 (assert (not (= (spec_sign in) (impl0_sign in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; CHAR_BIT is the number of bits per byte (normally 8).
@@ -26,8 +28,10 @@
 )
 
 (push 1)
+(echo "spec_sign != impl1_sign")
 (assert (not (= (spec_sign in) (impl1_sign in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; or, for one less instruction (but not portable):
@@ -37,8 +41,10 @@
 )
 
 (push 1)
+(echo "spec_sign != impl2_sign")
 (assert (not (= (spec_sign in) (impl2_sign in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; victorphan: my implementation, extract sign bit and then sign extend
@@ -47,8 +53,10 @@
 )
 
 (push 1)
+(echo "spec_sign != impl3_sign")
 (assert (not (= (spec_sign in) (impl3_sign in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; Alternatively, if you prefer the result be either -1 or +1, then use:
@@ -63,8 +71,10 @@
 )
 
 (push 1)
+(echo "spec_sign_alt != impl_sign_alt")
 (assert (not (= (spec_sign_alt in) (impl_sign_alt in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; On the other hand, if you prefer the result be either -1, 0, or +1, then use:
@@ -79,8 +89,10 @@
 )
 
 (push 1)
+(echo "spec_sign_with_eq_zero != spec_sign_with_eq_zero_alt")
 (assert (not (= (spec_sign_with_eq_zero in) (spec_sign_with_eq_zero_alt in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; sign = (v != 0) | -(int)((unsigned int)((int)v) >> (sizeof(int) * CHAR_BIT - 1));
@@ -91,8 +103,10 @@
 )
 
 (push 1)
+(echo "spec_sign_with_eq_zero != impl0_sign_with_eq_zero")
 (assert (not (= (spec_sign_with_eq_zero in) (impl0_sign_with_eq_zero in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; Or, for more speed but less portability:
@@ -104,8 +118,10 @@
 )
 
 (push 1)
+(echo "spec_sign_with_eq_zero != impl1_sign_with_eq_zero")
 (assert (not (= (spec_sign_with_eq_zero in) (impl1_sign_with_eq_zero in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; // Or, for portability, brevity, and (perhaps) speed:
@@ -116,8 +132,10 @@
 )
 
 (push 1)
+(echo "spec_sign_with_eq_zero != impl2_sign_with_eq_zero")
 (assert (not (= (spec_sign_with_eq_zero in) (impl2_sign_with_eq_zero in))))
 (check-sat)
+(echo "")
 (pop 1)
 
 ; If instead you want to know if something is non-negative, resulting in +1 or else 0, then use:
@@ -132,6 +150,8 @@
 )
 
 (push 1)
+(echo "spec_non_negative != impl_non_negative")
 (assert (not (= (spec_non_negative in) (impl_non_negative in))))
 (check-sat)
+(echo "")
 (pop 1)
