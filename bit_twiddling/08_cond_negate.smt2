@@ -23,3 +23,25 @@
 (check-sat)
 (echo "")
 (pop)
+
+; fNegate ? -v : v;
+(define-fun spec_alt_cond_negate ((f Bool) (v (_ BitVec 32))) (_ BitVec 32)
+    (ite f (bvneg v) v)
+)
+
+; r = (v ^ -fNegate) + fNegate;
+(define-fun impl_alt_cond_negate ((f Bool) (v (_ BitVec 32))) (_ BitVec 32)
+(let (
+(f_int (ite f (_ bv1 32) (_ bv0 32)))
+)
+(bvadd (bvxor v (bvneg f_int)) f_int)
+)
+)
+
+(push)
+(echo "spec_alt_cond_negate != impl_alt_cond_negate")
+(assert (not (= (spec_alt_cond_negate in_f in_v) (impl_alt_cond_negate in_f in_v))))
+(check-sat)
+(echo "")
+(pop)
+
